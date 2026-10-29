@@ -1,5 +1,6 @@
 import { Consumer, EachMessagePayload, Kafka } from "kafkajs";
 import { MessageBroker } from "../types/broker";
+import { handleEmitData } from "../common/handler";
 
 export class KafkaBroker implements MessageBroker {
   private consumer: Consumer;
@@ -39,6 +40,12 @@ export class KafkaBroker implements MessageBroker {
           topic,
           partition,
         });
+        switch(topic){
+          case "order":
+            handleEmitData("order-update", message)
+          default:
+            console.log("Nothing updated from message")
+        }
       },
     });
   }

@@ -3,7 +3,7 @@ import { createServer } from "node:http";
 import { Server } from "socket.io";
 
 const wsServer = createServer();
-
+// following from docs - https://socket.io/docs/v4/server-installation/
 const io = new Server(wsServer, {
     cors: {
         origin: config.get("cors.origin.admin_dashboard")
