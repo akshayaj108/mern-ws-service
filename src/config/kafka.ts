@@ -41,10 +41,11 @@ export class KafkaBroker implements MessageBroker {
           partition,
         });
         switch(topic){
-          case "order":
-            handleEmitData("order-update", message)
+          case 'order':
+            handleEmitData('order-update', message);
+            break;
           default:
-            console.log("Nothing updated from message")
+            console.log("Nothing updated from message", topic)
         }
       },
     });

@@ -11,7 +11,6 @@ const io = new Server(wsServer, {
 });
 
 io.on("connection", (socket) =>{
-    console.log("client connected - ", socket);
 
     socket.on("join", (data) =>{
         socket.join(String(data.tenantId));
